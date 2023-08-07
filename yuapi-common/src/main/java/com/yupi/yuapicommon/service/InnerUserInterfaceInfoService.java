@@ -1,0 +1,21 @@
+package com.yupi.yuapicommon.service;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.yupi.yuapicommon.model.entity.UserInterfaceInfo;
+
+/**
+* @author jiandongchen
+* @description 针对表【user_interface_info(用户调用接口关系)】的数据库操作Service
+* @createDate 2023-07-10 14:18:44
+*/
+public interface InnerUserInterfaceInfoService{
+    /**
+     * 调用接口统计
+     * @param interfaceInfoId
+     * @param userId
+     * @return
+     */
+    boolean invokeCount(long interfaceInfoId, long userId);
+
+
+}
