@@ -52,7 +52,7 @@
 
 - 查看所有接口
 
-<img src="README.assets/image-20230810224446152.png" alt="image-20230810224446152" style="zoom:67%;" />
+<img src="README.assets/image-20230810224446152.png" alt="image-20230810224446152" style="zoom: 50%;" />
 
 ### 接口详情与在线调用
 
@@ -60,25 +60,25 @@
 
   - 示例 1：
 
-  ​	<img src="README.assets/image-20230810224959444.png" alt="image-20230810224959444" style="zoom:67%;" />
+  ​	<img src="README.assets/image-20230810224959444.png" alt="image-20230810224959444" style="zoom: 50%;" />
 
   - 示例 2：当请求参数为null，在线测试处可以为空
 
-  ​	<img src="README.assets/image-20230810224807435.png" alt="image-20230810224807435" style="zoom:67%;" />
+  ​	<img src="README.assets/image-20230810224807435.png" alt="image-20230810224807435" style="zoom: 50%;" />
 
-![image-20230810224825631](README.assets/image-20230810224825631.png)
+<img src="README.assets/image-20230810224825631.png" alt="image-20230810224825631" style="zoom:50%;" />
 
 ### 接口管理
 
-<img src="README.assets/image-20230810225039721.png" alt="image-20230810225039721" style="zoom:67%;" />
+<img src="README.assets/image-20230810225039721.png" alt="image-20230810225039721" style="zoom: 50%;" />
 
 ### 接口分析
 
-<img src="README.assets/image-20230810225103683.png" alt="image-20230810225103683" style="zoom:67%;" />
+<img src="README.assets/image-20230810225103683.png" alt="image-20230810225103683" style="zoom: 50%;" />
 
 Tips：用户要根据 ak / sk 去调用接口
 
-<img src="README.assets/image-20230810225124905.png" alt="image-20230810225124905" style="zoom: 50%;" />
+<img src="README.assets/image-20230810225124905.png" alt="image-20230810225124905" style="zoom: 25%;" />
 
 
 
