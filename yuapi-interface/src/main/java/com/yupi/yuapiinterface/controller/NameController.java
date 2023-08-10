@@ -1,6 +1,6 @@
 package com.yupi.yuapiinterface.controller;
 
-import com.yupi.yuapiclientsdk.model.User;
+import com.yupi.yuapiclientsdk.model.Body;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +25,7 @@ public class NameController {
     }
 
     @PostMapping("/user")
-    public String getUserNameByPost(@RequestBody User user, HttpServletRequest request) {
+    public String getUserNameByPost(@RequestBody Body user, HttpServletRequest request) {
 //        String accessKey = request.getHeader("accessKey");
 //        String nonce = request.getHeader("nonce");
 //        String timestamp = request.getHeader("timestamp");

@@ -8,13 +8,13 @@ import com.yupi.project.common.DeleteRequest;
 import com.yupi.project.common.ErrorCode;
 import com.yupi.project.common.ResultUtils;
 import com.yupi.project.exception.BusinessException;
-import com.yupi.project.model.dto.*;
 import com.yupi.project.model.dto.user.*;
 import com.yupi.project.model.vo.UserVO;
 import com.yupi.project.service.UserService;
 import com.yupi.yuapicommon.model.entity.User;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -162,6 +162,9 @@ public class UserController {
         }
         User user = new User();
         BeanUtils.copyProperties(userUpdateRequest, user);
+//        // 便于后端修改密码
+//        String password = DigestUtils.md5DigestAsHex(("yupi" + userUpdateRequest.getUserPassword()).getBytes());
+//        user.setUserPassword(password);
         boolean result = userService.updateById(user);
         return ResultUtils.success(result);
     }

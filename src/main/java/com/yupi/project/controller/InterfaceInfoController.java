@@ -3,6 +3,8 @@ package com.yupi.project.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.yupi.project.annotation.AuthCheck;
 import com.yupi.project.common.*;
 import com.yupi.project.constant.CommonConstant;
@@ -11,7 +13,6 @@ import com.yupi.project.model.dto.interfaceinfo.InterfaceInfoAddRequest;
 import com.yupi.project.model.dto.interfaceinfo.InterfaceInfoInvokeRequest;
 import com.yupi.project.model.dto.interfaceinfo.InterfaceInfoQueryRequest;
 import com.yupi.project.model.dto.interfaceinfo.InterfaceInfoUpdateRequest;
-
 import com.yupi.project.model.enums.InterfaceStatusEnum;
 import com.yupi.project.service.InterfaceInfoService;
 import com.yupi.project.service.UserService;
@@ -223,7 +224,7 @@ public class InterfaceInfoController {
             throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
         }
         //判断该接口是否可以调用
-        com.yupi.yuapiclientsdk.model.User user = new com.yupi.yuapiclientsdk.model.User();
+        com.yupi.yuapiclientsdk.model.Body user = new com.yupi.yuapiclientsdk.model.Body();
         user.setUsername("test");
         String username = yuApiClient.getUserNameByPost(user);
         if (StringUtils.isBlank(username)){
@@ -272,8 +273,43 @@ public class InterfaceInfoController {
      * @param request
      * @return
      */
-    @PostMapping("/invoke")
+    @PostMapping("/invoke/test")
     @AuthCheck(mustRole = "admin")
+    public BaseResponse<Object> testInvokeInterfaceInfo(@RequestBody InterfaceInfoInvokeRequest interfaceInfoInvokeRequest, HttpServletRequest request) {
+
+        if (interfaceInfoInvokeRequest == null || interfaceInfoInvokeRequest.getId() <= 0){
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
+        long id = interfaceInfoInvokeRequest.getId();
+        String userRequestParams = interfaceInfoInvokeRequest.getUserRequestParams();
+
+        // 判断是否存在
+        InterfaceInfo oldInterfaceInfo = interfaceInfoService.getById(id);
+        if (oldInterfaceInfo == null) {
+            throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
+        }
+        if (oldInterfaceInfo.getStatus() == InterfaceStatusEnum.OFFLINE.getValue()){
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "接口已关闭");
+        }
+        User loginUser = userService.getLoginUser(request);
+        String accessKey = loginUser.getAccessKey();
+        String secretKey = loginUser.getSecretKey();
+        YuApiClient tempClient = new YuApiClient(accessKey, secretKey);
+        Gson gson = new Gson();
+        com.yupi.yuapiclientsdk.model.Body user = gson.fromJson(userRequestParams, com.yupi.yuapiclientsdk.model.Body.class);
+        String userNameByPost = tempClient.getUserNameByPost(user);
+        return ResultUtils.success(userNameByPost);
+    }
+
+    /**
+     * 接口
+     *
+     * @param interfaceInfoInvokeRequest
+     * @param request
+     * @return
+     */
+    @PostMapping("/invoke")
+//    @AuthCheck(mustRole = "admin")
     public BaseResponse<Object> invokeInterfaceInfo(@RequestBody InterfaceInfoInvokeRequest interfaceInfoInvokeRequest, HttpServletRequest request) {
 
         if (interfaceInfoInvokeRequest == null || interfaceInfoInvokeRequest.getId() <= 0){
@@ -295,9 +331,27 @@ public class InterfaceInfoController {
         String secretKey = loginUser.getSecretKey();
         YuApiClient tempClient = new YuApiClient(accessKey, secretKey);
         Gson gson = new Gson();
-        com.yupi.yuapiclientsdk.model.User user = gson.fromJson(userRequestParams, com.yupi.yuapiclientsdk.model.User.class);
-        String userNameByPost = tempClient.getUserNameByPost(user);
-        return ResultUtils.success(userNameByPost);
+        String httpResponse = null;
+        if (id == 1) {
+            com.yupi.yuapiclientsdk.model.Body user = gson.fromJson(userRequestParams, com.yupi.yuapiclientsdk.model.Body.class);
+            httpResponse = tempClient.getUserNameByPost(user);
+        } else if (id == 2) {
+            httpResponse = tempClient.getTodayInHistory();
+        } else if (id == 3) {
+            JsonObject qqObject = JsonParser.parseString(userRequestParams).getAsJsonObject();
+            userRequestParams = qqObject.get("qq").getAsString();
+            httpResponse = tempClient.getQqStatus(userRequestParams);
+        } else if (id == 4) {
+            httpResponse = tempClient.getGoodText();
+        } else if (id == 5) {
+            httpResponse = tempClient.getImage();
+        } else if (id == 6) {
+            JsonObject ipObject = JsonParser.parseString(userRequestParams).getAsJsonObject();
+            userRequestParams = ipObject.get("ip").getAsString();
+            httpResponse = tempClient.getIpStatus(userRequestParams);
+        }
+
+        return ResultUtils.success(httpResponse);
     }
 
 

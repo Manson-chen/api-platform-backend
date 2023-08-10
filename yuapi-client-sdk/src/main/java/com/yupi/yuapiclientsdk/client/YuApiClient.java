@@ -5,7 +5,7 @@ import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
-import com.yupi.yuapiclientsdk.model.User;
+import com.yupi.yuapiclientsdk.model.Body;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
@@ -62,7 +62,7 @@ public class YuApiClient {
         return hashMap;
     }
 
-    public String getUserNameByPost(User user) {
+    public String getUserNameByPost(Body user) {
         String json = JSONUtil.toJsonStr(user);
         HttpResponse httpResponse = HttpRequest.post(GATEWAY_HOST + "/api/name/user")
                 .charset(StandardCharsets.UTF_8)
@@ -75,4 +75,67 @@ public class YuApiClient {
         return result;
 
     }
+
+    public String getTodayInHistory() {
+        HttpResponse httpResponse = HttpRequest.get(GATEWAY_HOST + "/api/other/today/history")
+                .charset(StandardCharsets.UTF_8)
+                .addHeaders(getHeaderMap(""))
+                .execute();
+        System.out.println(httpResponse.getStatus());
+        String result = httpResponse.body();
+        System.out.println(result);
+        return result;
+
+    }
+
+    public String getQqStatus(String number) {
+        HttpResponse httpResponse = HttpRequest.post(GATEWAY_HOST + "/api/other/qq/status")
+                .charset(StandardCharsets.UTF_8)
+                .addHeaders(getHeaderMap(number))
+                .form("qq", number)
+                .execute();
+        System.out.println(httpResponse.getStatus());
+        String result = httpResponse.body();
+        System.out.println(result);
+        return result;
+
+    }
+
+    public String getGoodText() {
+        HttpResponse httpResponse = HttpRequest.get(GATEWAY_HOST + "/api/other/text/good")
+                .charset(StandardCharsets.UTF_8)
+                .addHeaders(getHeaderMap(""))
+                .execute();
+        System.out.println(httpResponse.getStatus());
+        String result = httpResponse.body();
+        System.out.println(result);
+        return result;
+
+    }
+
+    public String getImage() {
+        HttpResponse httpResponse = HttpRequest.get(GATEWAY_HOST + "/api/other/image")
+                .charset(StandardCharsets.UTF_8)
+                .addHeaders(getHeaderMap(""))
+                .execute();
+        System.out.println(httpResponse.getStatus());
+        String result = httpResponse.body();
+        System.out.println(result);
+        return result;
+
+    }
+
+    public String getIpStatus(String ip) {
+        HttpResponse httpResponse = HttpRequest.post(GATEWAY_HOST + "/api/other/ip/status")
+                .charset(StandardCharsets.UTF_8)
+                .addHeaders(getHeaderMap(ip))
+                .form("ip", ip)
+                .execute();
+        System.out.println(httpResponse.getStatus());
+        String result = httpResponse.body();
+        System.out.println(result);
+        return result;
+
+    }
+
 }
