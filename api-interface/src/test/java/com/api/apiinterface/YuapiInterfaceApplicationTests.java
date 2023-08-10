@@ -1,10 +1,7 @@
-package com.yupi.yuapiinterface;
+package com.api.apiinterface;
 
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
-import cn.hutool.json.JSONUtil;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.yupi.yuapiclientsdk.client.YuApiClient;
 import com.yupi.yuapiclientsdk.model.Body;
 import org.junit.jupiter.api.Test;
@@ -12,8 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
 
 @SpringBootTest
 class YuapiInterfaceApplicationTests {

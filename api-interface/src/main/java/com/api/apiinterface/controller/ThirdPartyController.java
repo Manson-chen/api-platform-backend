@@ -1,8 +1,7 @@
-package com.yupi.yuapiinterface.controller;
+package com.api.apiinterface.controller;
 
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;

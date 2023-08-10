@@ -1,4 +1,4 @@
-package com.yupi.yuapiinterface.controller;
+package com.api.apiinterface.controller;
 
 import com.yupi.yuapiclientsdk.model.Body;
 import org.springframework.web.bind.annotation.*;

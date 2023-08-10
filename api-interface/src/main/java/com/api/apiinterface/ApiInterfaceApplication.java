@@ -1,13 +1,13 @@
-package com.yupi.yuapiinterface;
+package com.api.apiinterface;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class YuapiInterfaceApplication {
+public class ApiInterfaceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(YuapiInterfaceApplication.class, args);
+        SpringApplication.run(ApiInterfaceApplication.class, args);
     }
 
 }

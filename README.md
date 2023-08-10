@@ -8,9 +8,9 @@
 
 > 此项目是前后端分离项目，在此仅做后端介绍
 >
-> 在线访问地址：http://62.234.8.36/（用户名：admin、密码：admin123456）
-
-
+> 在线访问地址：http://62.234.8.36/
+>
+> （用户名：admin、密码：admin123456）
 
 ## 技术选型
 
@@ -32,47 +32,49 @@
 
 ### 系统架构
 
-![image-20230810223715598](images/image-20230810223715598.png)
+![image-20230811001313519](README.assets/image-20230811001313519.png)
 
 ### 模块划分
 
 总共包含了 web模块、API 网关模块、模拟接口模块、公共模块、客户端 SDK 模块
 
-- Web（backend）：主要用于接收前端的请求，并处理与数据库相关的操作
-- API 网关（gateway）：用于路由转发、统一鉴权、访问控制、流量染色、跨域处理、统一日志、**统一业务处理**
-- 模拟接口（interface）：提供可供调用的接口
-- 公共模块（common）：封装公共使用的类，减少重复代码
-- 客户端 SDK：提供给开发者调用，简洁开发
+- Web（api-backend）：主要用于接收前端的请求，并处理与数据库相关的操作
+- API 网关（api-gateway）：用于路由转发、统一鉴权、访问控制、流量染色、跨域处理、统一日志、**统一业务处理**
+- 模拟接口（api-interface）：提供可供调用的接口
+- 公共模块（api-common）：封装公共使用的类，减少重复代码
+- 客户端 SDK（api-client-sdk）：提供给开发者调用，简洁开发
 
 
 
 ## 项目成果
 
-首页：查看所有接口
+### 首页
 
-![image-20230810224446152](README.assets/image-20230810224446152.png)
+- 查看所有接口
 
-接口详情与在线调用
+<img src="README.assets/image-20230810224446152.png" alt="image-20230810224446152" style="zoom:67%;" />
+
+### 接口详情与在线调用
 
 - 根据请求参数去调用
 
   - 示例 1：
 
-    ​	![image-20230810224959444](README.assets/image-20230810224959444.png)
+  ​	<img src="README.assets/image-20230810224959444.png" alt="image-20230810224959444" style="zoom:67%;" />
 
   - 示例 2：当请求参数为null，在线测试处可以为空
 
-    ​	![image-20230810224807435](README.assets/image-20230810224807435.png)
+  ​	<img src="README.assets/image-20230810224807435.png" alt="image-20230810224807435" style="zoom:67%;" />
 
-    ![image-20230810224825631](README.assets/image-20230810224825631.png)
+![image-20230810224825631](README.assets/image-20230810224825631.png)
 
-接口管理：
+### 接口管理
 
-![image-20230810225039721](README.assets/image-20230810225039721.png)
+<img src="README.assets/image-20230810225039721.png" alt="image-20230810225039721" style="zoom:67%;" />
 
-接口分析：
+### 接口分析
 
-![image-20230810225103683](README.assets/image-20230810225103683.png)
+<img src="README.assets/image-20230810225103683.png" alt="image-20230810225103683" style="zoom:67%;" />
 
 Tips：用户要根据 ak / sk 去调用接口
 
