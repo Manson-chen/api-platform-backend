@@ -12,6 +12,74 @@
 >
 > 前端项目地址：https://github.com/Manson-chen/api-platform-frontend
 
+## 快速开始
+
+### 本项目启动
+
+1. 修改 yml 中的配置
+2. 启动 Nacos 注册中心
+3. 启动 api-backend 模块 -> api-gateway模块 -> api-interface 模块
+
+
+
+### 客户端 SDK 调用
+
+#### 1、引入 SDK
+
+```xml
+<dependency>
+    <groupId>io.github.manson-chen</groupId>
+    <artifactId>api-client-sdk</artifactId>
+    <version>0.0.3</version>
+</dependency>
+```
+
+
+
+#### 2、复制开发者密钥对
+
+<img src="README.assets/image-20230810225124905.png" alt="image-20230810225124905" style="zoom: 25%;" />
+
+#### 3、初始化 ApiClient 对象
+
+- 方法1：自主 new 对象
+
+```java
+String accessKey = "你的 accessKey";
+String secretKey = "你的 secretKey";
+ApiClient client = new ApiClient(accessKey, secretKey);
+```
+
+- 方法2：通过配置注入对象
+
+修改 yml 配置文件：
+
+```yml
+api:
+  client:
+    access-key: 你的 access-key
+    secret-key: 你的 secret-key
+```
+
+使用客户端对象：
+
+```java
+@Resource
+private ApiClient client;
+```
+
+#### 4、调用接口并获取响应
+
+```java
+String goodText = client.getGoodText();
+String image = client.getImage();
+String ipStatus = client.getIpStatus("ip address");
+String qqStatus = client.getQqStatus("qq number");
+String history = client.getTodayInHistory();
+```
+
+
+
 ## 技术选型
 
 ### 后端技术栈
@@ -23,8 +91,6 @@
 - Nacos：注册中心
 - Dubbo：基于 RPC 实现（像调用本地方法一样调用远程方法）
 - Spring Cloud Gateway：微服务网关
-
-
 
 
 
@@ -76,21 +142,11 @@
 
 <img src="README.assets/image-20230810225103683.png" alt="image-20230810225103683" style="zoom: 50%;" />
 
-Tips：用户要根据 ak / sk 去调用接口
-
-<img src="README.assets/image-20230810225124905.png" alt="image-20230810225124905" style="zoom: 25%;" />
 
 
 
-## 快速启动
 
-1. 修改 yml 中的配置
 
-2. 启动 Nacos 注册中心
-
-3. 启动 api-backend 模块 -> api-gateway模块 -> api-interface 模块
-
-   
 
 
 

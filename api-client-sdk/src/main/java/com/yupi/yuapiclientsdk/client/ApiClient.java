@@ -18,7 +18,7 @@ import static com.yupi.yuapiclientsdk.utils.SignUtils.genSign;
  *
  * @author Jiandong
  */
-public class YuApiClient {
+public class ApiClient {
 
     private static final String GATEWAY_HOST = "http://localhost:8090";
 
@@ -26,7 +26,7 @@ public class YuApiClient {
 
     private String secretKey;
 
-    public YuApiClient(String accessKey, String secretKey) {
+    public ApiClient(String accessKey, String secretKey) {
         this.accessKey = accessKey;
         this.secretKey = secretKey;
     }

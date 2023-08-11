@@ -1,6 +1,6 @@
 package com.yupi.yuapiclientsdk;
 
-import com.yupi.yuapiclientsdk.client.YuApiClient;
+import com.yupi.yuapiclientsdk.client.ApiClient;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConfigurationProperties("yuapi.client")
+@ConfigurationProperties("api.client")
 @Data
 @ComponentScan
 public class YuApiClientConfig {
@@ -18,7 +18,7 @@ public class YuApiClientConfig {
     private String secretKey;
 
     @Bean
-    public YuApiClient yuApiClient() {
-        return new YuApiClient(accessKey, secretKey);
+    public ApiClient ApiClient() {
+        return new ApiClient(accessKey, secretKey);
     }
 }
