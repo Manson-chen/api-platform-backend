@@ -2,6 +2,10 @@ package com.api.apiinterface;
 
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.yupi.yuapiclientsdk.client.YuApiClient;
 import com.yupi.yuapiclientsdk.model.Body;
 import org.junit.jupiter.api.Test;
@@ -92,13 +96,31 @@ class YuapiInterfaceApplicationTests {
 //        System.out.println(status);
 //        System.out.println(result);
 
-        String requestUrl = "https://api.btstu.cn/qqol/api.php";
+//        String requestUrl = "https://api.btstu.cn/qqol/api.php";
+////        HttpResponse httpResponse = HttpRequest.get(requestUrl + "?text=" + text)
+//        HttpResponse httpResponse = HttpRequest.post(requestUrl)
+//                .charset(StandardCharsets.UTF_8)
+//                .form("domain", "qq.com")
+//                .execute();
+//        String result = httpResponse.body();
+
+
+        String requestUrl = "https://api.oick.cn/lishi/api.php";
 //        HttpResponse httpResponse = HttpRequest.get(requestUrl + "?text=" + text)
-        HttpResponse httpResponse = HttpRequest.post(requestUrl)
+        HttpResponse httpResponse = HttpRequest.get(requestUrl)
                 .charset(StandardCharsets.UTF_8)
-                .form("domain", "qq.com")
                 .execute();
         String result = httpResponse.body();
+
+        System.out.println(result);
+        JsonElement jsonElement = JsonParser.parseString(result);
+//        int code = jsonObject.get("code").getAsInt();
+//        if (code != 200) {
+//            System.out.println("获取失败");
+//        }
+//        JsonArray jsonArray = jsonObject.get("result").getAsJsonArray();
+//        System.out.println(jsonArray);
+
     }
 
 }

@@ -27,16 +27,19 @@ public class ThirdPartyController {
                 .charset(StandardCharsets.UTF_8)
                 .execute();
         String result = httpResponse.body();
-        JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
+        // 获取的结果出错
+//        JsonObject jsonObject = JsonParser.parseString(result).getAsJsonObject();
         System.out.println(result);
-        int code = jsonObject.get("code").getAsInt();
-        if (code != 200) {
-            return "获取失败";
-        }
-        JsonArray jsonArray = jsonObject.get("result").getAsJsonArray();
-        System.out.println(jsonArray);
-        return jsonArray.toString();
+//        int code = jsonObject.get("code").getAsInt();
+//        if (code != 200) {
+//            return "获取失败";
+//        }
+//        JsonArray jsonArray = jsonObject.get("result").getAsJsonArray();
+//        System.out.println(jsonArray);
+//        return jsonArray.toString();
+        return result;
     }
+
 
     @PostMapping("/qq/status")
     public String getQqStatus(@RequestParam String qq) {
