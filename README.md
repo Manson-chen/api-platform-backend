@@ -6,11 +6,11 @@
 - 用户可以注册登录，开通接口调用权限。用户可以浏览接口并调用，且每次调用会进行统计。
 - 管理员可以发布接口、下线接口、接入接口，以及可视化接口的调用情况、数据。
 
-> 此项目是前后端分离项目，在此仅做后端介绍
->
-> 在线访问地址：http://62.234.8.36/
+> 此项目是前后端分离项目，在线访问地址：http://62.234.8.36/
 >
 > （用户名：admin、密码：admin123456）
+>
+> 前端项目地址：https://github.com/Manson-chen/api-platform-frontend
 
 ## 技术选型
 
@@ -88,7 +88,7 @@ Tips：用户要根据 ak / sk 去调用接口
 
 2. 启动 Nacos 注册中心
 
-3. 启动 backend 模块 -> gateway模块 -> interface 模块
+3. 启动 api-backend 模块 -> api-gateway模块 -> api-interface 模块
 
    
 
