@@ -42,7 +42,7 @@
 
 #### 3、初始化 ApiClient 对象
 
-- 方法1：自主 new 对象
+**方法1：自主 new 对象**
 
 ```java
 String accessKey = "你的 accessKey";
@@ -50,7 +50,9 @@ String secretKey = "你的 secretKey";
 ApiClient client = new ApiClient(accessKey, secretKey);
 ```
 
-- 方法2：通过配置注入对象
+
+
+**方法2：通过配置注入对象**
 
 修改 yml 配置文件：
 
@@ -73,8 +75,8 @@ private ApiClient client;
 ```java
 String goodText = client.getGoodText();
 String image = client.getImage();
-String ipStatus = client.getIpStatus("ip address");
-String qqStatus = client.getQqStatus("qq number");
+String ipStatus = client.getIpStatus("域名");
+String qqStatus = client.getQqStatus("qq 账号");
 String history = client.getTodayInHistory();
 ```
 
