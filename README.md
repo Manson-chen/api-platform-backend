@@ -8,7 +8,7 @@
 
 > 此项目是前后端分离项目，在线访问地址：http://62.234.8.36/
 >
-> （用户名：admin、密码：admin123456）
+> （用户名：admin、密码：abc123456）
 >
 > 前端项目地址：https://github.com/Manson-chen/api-platform-frontend
 
